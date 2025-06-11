@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Azriel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+
+  <style>
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(167, 136, 109, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease-out;
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background-color: rgba(167, 136, 109, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    .hover-target:hover ~ .cursor {
+      transform: scale(2);
+      background-color: rgba(255, 215, 174, 0.6);
+    }
+    .nav-item {
+      transition: color 0.3s ease, font-weight 0.3s ease;
+    }
+
+    .nav-item.active {
+      color: #a7886d !important;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .nav-item.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background-color: #a7886d;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .nav-item:hover {
+      color: #a7886d;
+    }
+
+    main {
+      overflow-y: auto;
+      height: 100vh;
+      scroll-behavior: smooth;
+    }
+  </style>
+  <body class="bg-[#f7f4e1] text-[#3a3a3a] font-sans h-screen flex">
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-trail"></div>
+
+    <!-- Sidebar (Fixed) -->
+    <aside
+      class="w-1/3 bg-[#f7f4e1] p-12 flex flex-col justify-between h-screen fixed"
+    >
+      <div>
+        <h1 class="text-4xl font-bold text-[#3a3a3a]">Muhamad Azriel Ilham</h1>
+        <p class="text-lg text-[#a7886d] mt-2">Web Developer</p>
+        <p class="mt-4 text-[#5c5c5c]">
+          I build accessible, pixel-perfect digital experiences for the web.
+        </p>
+
+        <!-- Navigation -->
+        <nav class="mt-8">
+          <a
+            href="#about"
+            class="nav-item block text-[#5c5c5c] py-2 text-lg font-semibold"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="nav-item block text-[#5c5c5c] py-2 text-lg font-semibold"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="nav-item block text-[#5c5c5c] py-2 text-lg font-semibold"
+            >Projects</a
+          >
+        </nav>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex space-x-6 text-2xl">
+        <a href="https://github.com" class="hover-target hover:text-[#a7886d]"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a href="https://linkedin.com" class="hover-target hover:text-[#a7886d]"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://codepen.io" class="hover-target hover:text-[#a7886d]"
+          ><i class="fa-brands fa-codepen"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/rilzzsiii/"
+          class="hover-target hover:text-[#a7886d]"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a
+          href="https://goodreads.com"
+          class="hover-target hover:text-[#a7886d]"
+          ><i class="fa-brands fa-goodreads"></i
+        ></a>
+      </div>
+    </aside>
+
+    <!-- Main Content  -->
+    <main class="w-2/3 ml-auto p-12 overflow-y-auto h-screen">
+      <section id="about" class="mb-16">
+        <div class="max-w-6xl mx-auto mt-16 px-6">
+          <!-- Judul full lebar -->
+          <h2
+            class="text-4xl font-bold text-[#2e2e2e] mb-6 border-b-4 border-[#a7886d] inline-block pb-1"
+          >
+            About Me
+          </h2>
+
+          <!-- Konten & Gambar sejajar -->
+          <div
+            class="flex flex-col items-start gap-12 text-[#4b4b4b] leading-relaxed text-lg"
+          >
+            <div class="w-full flex flex-col justify-between h-full space-y-5">
+              <p>
+                I am a
+                <span class="font-semibold">Web Developer</span> currently
+                studying at
+                <a
+                  href="https://idn.sch.id"
+                  class="text-[#a7886d] hover:underline font-semibold"
+                >
+                  IDN Boarding School Sentul </a
+                >, grade 11.
+              </p>
+
+              <p>
+                I have a strong passion for web development, both frontend and
+                backend. I work with
+                <span class="font-medium text-gray-800"
+                  >HTML, CSS, JavaScript</span
+                >, and modern frameworks such as
+                <span class="font-medium text-gray-800">Tailwind CSS</span> and
+                <span class="font-medium text-gray-800">React</span> to create
+                responsive, user-friendly, and interactive websites.
+              </p>
+
+              <p>
+                I'm always learning and improving my skills in tech, with
+                interests in
+                <span class="italic">UI/UX design</span>,
+                <span class="italic">web animation</span>, and
+                <span class="italic">web application development</span>.
+              </p>
+
+              <p class="mt-6">
+                I believe technology is an incredible tool to build impactful
+                and innovative solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="mt-16">
+          <h3 class="text-2xl font-semibold text-[#3a3a3a] mb-6">Education</h3>
+          <div class="space-y-6">
+            <!-- Education Item -->
+            <div class="flex items-center gap-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md"
+              >
+                <i class="fas fa-graduation-cap text-3xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-[#3a3a3a]">
+                  IDN Boarding School Sentul
+                </h4>
+                <p class="text-[#5c5c5c] text-sm">
+                  Grade 10 - Software Development Major (2024 - Present)
+                </p>
+                <p class="text-[#5c5c5c] mt-2">
+                  Studying web development focusing on It, Religion/Diniyyah,
+                  and Stadium General.
+                </p>
+              </div>
+            </div>
+
+            <!-- Education Item -->
+            <div class="flex items-center gap-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md"
+              >
+                <i class="fas fa-graduation-cap text-3xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-[#3a3a3a]">
+                  IT IZZUDDIN Palembang
+                </h4>
+                <p class="text-[#5c5c5c] text-sm">
+                  Grade 7 - 9 Islamic School (2020 - 2023)
+                </p>
+                <p class="text-[#5c5c5c] mt-2">
+                  Focused on religion and Stadium General.
+                </p>
+              </div>
+            </div>
+
+            <!-- Education Item -->
+            <div class="flex items-center gap-6">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md"
+              >
+                <i class="fas fa-graduation-cap text-3xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-[#3a3a3a]">
+                  Sd 6 Negeri Betung Banyuasin
+                </h4>
+                <p class="text-[#5c5c5c] text-sm">
+                  Grade 1 - 6 Negeri School(2014 - 2019)
+                </p>
+                <p class="text-[#5c5c5c] mt-2">Focused on Stadium General.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hobby Section -->
+        <div class="mt-16">
+          <h3 class="text-2xl font-semibold text-[#3a3a3a] mb-6">Hobbies</h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Hobby Item -->
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-code text-3xl"
+                  aria-label="Coding hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Coding</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-paint-brush text-3xl"
+                  aria-label="UI/UX Design hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">UI/UX Design</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-gamepad text-3xl"
+                  aria-label="Gaming hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Gaming</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-book text-3xl"
+                  aria-label="Reading hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Reading</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-music text-3xl"
+                  aria-label="Listening Music hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Listening Music</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-camera text-3xl"
+                  aria-label="Photography hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Photography</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-hiking text-3xl"
+                  aria-label="Adventures hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Adventures</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full shadow-md hover:bg-[#8b7151] hover:scale-110 hover:shadow-xl transition-transform transition-colors duration-300 ease-in-out"
+              >
+                <i
+                  class="fas fa-football-ball text-3xl"
+                  aria-label="Sports hobby icon"
+                ></i>
+              </div>
+              <p class="mt-3 text-[#3a3a3a] font-semibold">Sports</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="mt-16">
+          <h3 class="text-2xl font-semibold text-[#3a3a3a] mb-6 text-center">
+            Experiences
+          </h3>
+          <div class="max-w-2xl mx-auto space-y-6" id="chat-container"></div>
+        </div>
+
+        <!-- Certificate Section -->
+        <div class="mt-10">
+          <!-- Adding space between Experience and Certificate -->
+          <h3 class="text-xl font-semibold mb-4">🏅 My Certificates</h3>
+          <p class="text-sm text-gray-500 mb-6">
+            📌 (Each certificate is hung like a plaque on a board!)
+          </p>
+
+          <!-- Certificate 1: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Memulai Dasar Pemrograman untuk Menjadi Pengembang.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Memulai Dasar Pemrograman untuk Menjadi Pengembang Software
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini menunjukkan bahwa saya telah menyelesaikan kelas
+              "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software" yang
+              diselenggarakan oleh Dicoding. Kelas ini dirancang untuk pemula
+              yang ingin memulai karier di bidang pengembangan perangkat lunak,
+              dengan materi yang mencakup tahapan analisis, perencanaan, hingga
+              modifikasi perangkat lunak serta dokumentasinya. Melalui kelas
+              ini, saya memperoleh pemahaman dasar yang kuat tentang proses
+              pengembangan perangkat lunak sesuai dengan standar industri.
+            </p>
+          </div>
+
+          <!-- Certificate 2: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Pengenalan ke Logika Pemrograman (Programming Logic 101).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Pengenalan ke Logika Pemrograman (Programming Logic 101)
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini menunjukkan bahwa saya telah menyelesaikan kelas
+              "Pengenalan ke Logika Pemrograman (Programming Logic 101)" yang
+              diselenggarakan oleh Dicoding. Kelas ini mengajarkan dasar-dasar
+              logika pemrograman seperti memahami alur logika, penggunaan
+              pseudocode, flowchart, hingga implementasi struktur percabangan
+              dan perulangan. Melalui kelas ini, saya memperoleh pemahaman awal
+              yang penting dalam berpikir logis dan sistematis sebelum
+              mempelajari bahasa pemrograman secara lebih mendalam.
+            </p>
+          </div>
+
+          <!-- Certificate 3: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Dasar Visualisasi Data.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Dasar Visualisasi Data
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini diberikan setelah saya menyelesaikan kelas "Belajar
+              Dasar Visualisasi Data" yang diselenggarakan oleh Dicoding. Dalam
+              kelas ini, saya mempelajari dasar-dasar visualisasi data
+              menggunakan bahasa pemrograman Python dan library populer seperti
+              Matplotlib dan Seaborn. Saya belajar menyajikan data dalam bentuk
+              grafik yang informatif dan menarik untuk mendukung proses
+              pengambilan keputusan berbasis data. Kelas ini juga melatih
+              kemampuan saya dalam memahami jenis-jenis data dan pemilihannya
+              untuk visualisasi yang tepat.
+            </p>
+          </div>
+
+          <!-- Certificate 4: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Dasar Pemrograman Web.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Dasar Pemrograman Web
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini menunjukkan bahwa saya telah menyelesaikan kelas
+              "Belajar Dasar Pemrograman Web" dari Dicoding. Dalam kelas ini,
+              saya mempelajari dasar-dasar pembuatan website menggunakan
+              teknologi web seperti HTML, CSS, dan JavaScript. Saya memahami
+              cara membangun halaman web yang terstruktur, menerapkan styling
+              yang menarik, dan menambahkan interaktivitas dasar. Kelas ini juga
+              menekankan praktik terbaik dalam menulis kode yang bersih dan
+              mudah dipelihara serta memperkenalkan konsep aksesibilitas dan
+              performa dalam pengembangan web.
+            </p>
+          </div>
+
+          <!-- Certificate 5: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Membuat Front-End Web untuk Pemula.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Membuat Front-End Web untuk Pemula
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini diperoleh setelah menyelesaikan kelas "Belajar
+              Membuat Front-End Web untuk Pemula" yang diselenggarakan oleh
+              Dicoding. Dalam kelas ini, saya mempelajari dasar-dasar
+              pengembangan front-end menggunakan HTML, CSS, dan JavaScript
+              secara praktis. Saya juga belajar bagaimana membangun tampilan
+              antarmuka web yang interaktif dan responsif serta memahami cara
+              kerja Document Object Model (DOM) dan bagaimana memanipulasinya
+              menggunakan JavaScript. Proyek akhir dalam kelas ini menuntut saya
+              untuk membuat aplikasi web sederhana yang sesuai dengan prinsip
+              front-end development modern.
+            </p>
+          </div>
+
+          <!-- Certificate 6: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Dasar Pemrograman JavaScript.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Dasar Pemrograman JavaScript
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini diperoleh setelah menyelesaikan kelas "Belajar
+              Dasar Pemrograman JavaScript" dari Dicoding. Dalam kelas ini, saya
+              mempelajari konsep dasar JavaScript seperti tipe data, variabel,
+              operator, percabangan, perulangan, fungsi, dan objek. Saya juga
+              belajar bagaimana menulis kode JavaScript yang clean dan
+              maintainable sesuai dengan standar industri. Kelas ini memberikan
+              pemahaman yang kuat tentang bagaimana JavaScript bekerja di balik
+              layar serta cara mengimplementasikannya untuk membangun logika
+              dalam aplikasi web.
+            </p>
+          </div>
+
+          <!-- Certificate 7: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Cloud Practitioner Essentials (Belajar Dasar AWS Cloud).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini diperoleh setelah menyelesaikan kelas "Cloud
+              Practitioner Essentials (Belajar Dasar AWS Cloud)" yang bekerja
+              sama dengan AWS. Dalam kelas ini, saya mempelajari konsep dasar
+              komputasi awan (cloud computing), layanan-layanan inti AWS seperti
+              EC2, S3, RDS, serta prinsip keamanan dan arsitektur cloud. Kelas
+              ini juga memberikan wawasan tentang model tanggung jawab bersama,
+              penagihan dan penetapan harga AWS, serta praktik terbaik dalam
+              penggunaan layanan cloud. Pemahaman ini menjadi fondasi penting
+              untuk memulai karier di bidang cloud computing.
+            </p>
+          </div>
+
+          <!-- Certificate 8: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Membuat Aplikasi Flutter untuk Pemula.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Membuat Aplikasi Flutter untuk Pemula
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini saya peroleh setelah menyelesaikan kelas "Belajar
+              Membuat Aplikasi Flutter untuk Pemula" dari Dicoding. Dalam kelas
+              ini, saya mempelajari dasar-dasar pengembangan aplikasi mobile
+              menggunakan Flutter dan Dart. Materi yang dipelajari mencakup
+              pembuatan UI responsif, pengelolaan state, navigasi antar halaman,
+              serta pengintegrasian aset dan package eksternal. Di akhir kelas,
+              saya berhasil membangun aplikasi Flutter sederhana dengan tampilan
+              menarik dan interaksi dasar yang baik.
+            </p>
+          </div>
+
+          <!-- Certificate 9: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Dasar AI.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Dasar AI
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini saya peroleh setelah menyelesaikan kelas "Belajar
+              Dasar AI" dari Dicoding. Dalam kursus ini, saya mempelajari konsep
+              dasar kecerdasan buatan (Artificial Intelligence), termasuk
+              pengenalan machine learning, neural networks, dan penerapan AI
+              dalam berbagai bidang. Saya juga belajar tentang algoritma dasar
+              AI, data preprocessing, serta contoh penggunaan AI untuk
+              memecahkan masalah dunia nyata.
+            </p>
+          </div>
+
+          <!-- Certificate 10: Dicoding -->
+          <div class="space-y-4 mb-6">
+            <h4 class="text-lg font-semibold">
+              <a
+                href="/src/certificate/Belajar Membuat Aplikasi Back-End untuk Pemula.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Lihat sertifikat asli"
+                class="text-blue-600 no-underline flex items-center gap-1"
+              >
+                🔹 Belajar Membuat Aplikasi Back-End untuk Pemula
+                <span aria-hidden="true">🔗</span>
+              </a>
+            </h4>
+            <p class="text-sm text-gray-500">🖇 Diterbitkan oleh: Dicoding</p>
+            <p class="text-gray-700">
+              Sertifikat ini diberikan setelah menyelesaikan kursus pembuatan
+              aplikasi back-end untuk pemula. Dalam kursus ini, saya mempelajari
+              konsep dasar pengembangan back-end seperti pengelolaan server,
+              pembuatan API menggunakan Node.js dan Express, serta interaksi
+              dengan database. Selain itu, saya juga belajar mengenai keamanan
+              aplikasi back-end, termasuk praktik terbaik untuk melindungi
+              aplikasi dari serangan dan menjaga data pengguna tetap aman.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="mb-40 relative pt-20">
+        <h2 class="text-4xl font-bold text-[#3a3a3a] text-center mb-8">
+          Skills
+        </h2>
+        <div class="w-24 border-t-4 border-[#a7886d] mx-auto mb-12"></div>
+
+        <!-- Garis Tengah -->
+        <div
+          class="absolute left-1/2 transform -translate-x-1/2 w-1 h-[calc(100%-5rem)] bg-[#a7886d]"
+        ></div>
+
+        <div class="max-w-5xl mx-auto relative space-y-32">
+          <!-- HTML -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2 flex justify-end pr-6 text-right">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#a7886d]">HTML</h3>
+                <p class="text-[#5c5c5c]">
+                  Attributes, elements, formatting, links, images, layout,
+                  semantics, tables-list, classes, id, file paths, input types,
+                  favicon.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-html5"></i>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- CSS -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2"></div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-css3-alt"></i>
+            </div>
+            <div class="w-1/2 pl-6">
+              <h3 class="text-2xl font-semibold text-[#a7886d]">CSS</h3>
+              <p class="text-[#5c5c5c]">
+                Selectors, background, border, margin and padding, box-model,
+                position, z-index, color,
+                sizing.Keyframe,box-shadow,text-shadow,
+              </p>
+            </div>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2 flex justify-end pr-6 text-right">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#a7886d]">
+                  JavaScript
+                </h3>
+                <p class="text-[#5c5c5c]">
+                  Getting variable, Function, Arrow function, Localstorage &
+                  Session storage data, Fetching api, DOM manipulation, Jquery,
+                  Event handler, Ajax menipulation.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- PHP -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2"></div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-php"></i>
+            </div>
+            <div class="w-1/2 pl-6">
+              <h3 class="text-2xl font-semibold text-[#a7886d]">PHP</h3>
+              <p class="text-[#5c5c5c]">
+                Data type, Variabel, Operator, Control structure, Array, PHP
+                CRUD,
+              </p>
+            </div>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2 flex justify-end pr-6 text-right">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#a7886d]">
+                  Tailwind CSS
+                </h3>
+                <p class="text-[#5c5c5c]">
+                  Basic utility, Layouting, Transform, Transition, Animation,
+                  Responsive Design, Flexbox, Grid.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-css3-alt"></i>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- React -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2"></div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <div class="w-1/2 pl-6">
+              <h3 class="text-2xl font-semibold text-[#a7886d]">React</h3>
+              <p class="text-[#5c5c5c]">
+                React Installation, JSX (JavaScript XML), Components, Props &
+                State, Event Handling, Conditional Rendering, Lists and Keys,
+                React Hooks, React Router.
+              </p>
+            </div>
+          </div>
+
+          <!-- Laravel -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2 flex justify-end pr-6 text-right">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#a7886d]">Laravel</h3>
+                <p class="text-[#5c5c5c]">
+                  Laravel 9 dan Laravel 11, Model, View, Controller, Route,
+                  Route Group, Prefix, Middleware, Relation, ERD, CRUD, Slicing
+                  Template, Hosting, Payment Gateway (Midtrans), Command
+                  Artisan, Migration, Create API.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-php"></i>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- Bootstrap -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2"></div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fab fa-bootstrap"></i>
+            </div>
+            <div class="w-1/2 pl-6">
+              <h3 class="text-2xl font-semibold text-[#a7886d]">Bootstrap</h3>
+              <p class="text-[#5c5c5c]">
+                Ui kit, Installation, Configuration with CDN, Typography,
+                Customize, Sass, Layouting, Breakout, Containers, Column, Grid,
+                Z-index, CSS grid, Navbar, Form, Form control input, Validation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Dart -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2 flex justify-end pr-6 text-right">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#a7886d]">Dart</h3>
+                <p class="text-[#5c5c5c]">
+                  Dart & Flutter Installation, Comment, Data Type, Numbers,
+                  String & Boolean, Operator & Exception, Function, Optional
+                  Parameter, Lambda Expression, Variable Scope, Constant &
+                  Final, Null Safety, If and Else, For Loops.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fab fa-java"></i>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- Flutter -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2"></div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-android"></i>
+            </div>
+            <div class="w-1/2 pl-6">
+              <h3 class="text-2xl font-semibold text-[#a7886d]">Flutter</h3>
+              <p class="text-[#5c5c5c]">
+                Text, Row and Column, Container Widget, Stateless and Stateful,
+                Anonymous Method, TextStyle, List and ListView, Stack and Align,
+                Image, Spacer, Flexible, Card, TextField Widget, TextField
+                Decoration, Media Query.
+              </p>
+            </div>
+          </div>
+
+          <!-- MySQL -->
+          <div class="skill-item flex items-center gap-10">
+            <div class="w-1/2 flex justify-end pr-6 text-right">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#a7886d]">MySQL</h3>
+                <p class="text-[#5c5c5c]">
+                  Mysqli Extension, User Management and access right, Data
+                  Selection, Data Manipulation, Integration MySQL
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-[#a7886d] text-white rounded-full text-3xl"
+            >
+              <i class="fa-brands fa-database"></i>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="py-16">
+        <h2 class="text-3xl font-bold text-center text-[#3a3a3a] mb-10">
+          Projects
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+          <!-- Project Card 1 -->
+          <a
+            href="https://github.com/rayvanahnaf/Taminum-Pos.git"
+            target="_blank"
+            class="relative group overflow-hidden rounded-xl shadow-xl cursor-pointer"
+          >
+            <img
+              src="/src/img/Taminum Mockup.png"
+              alt="Taminum"
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 flex items-end">
+              <div
+                class="w-full px-4 py-6 bg-[#a7886d]/90 text-white translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out rounded-t-xl"
+              >
+                <h3 class="text-xl font-semibold">Taminum App</h3>
+                <p class="text-sm mt-1">
+                  Susu segar berpadu dengan rasa buah yang menggoda. Siap-siap
+                  untuk pengalaman rasa yang lebih creamy dan menyegarkan!
+                  Segera!
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project Card 2 -->
+          <a
+            href="https://github.com/azriel123123/laravel-Newsapp"
+            target="_blank"
+            class="relative group overflow-hidden rounded-xl shadow-xl cursor-pointer"
+          >
+            <img
+              src="/src/img/NewsApp Mockup.png"
+              alt="NewsApp"
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 flex items-end">
+              <div
+                class="w-full px-4 py-6 bg-[#a7886d]/90 text-white translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out rounded-t-xl"
+              >
+                <h3 class="text-xl font-semibold">NewsApp Website</h3>
+                <p class="text-sm mt-1">
+                  A sleek, modern news platform built to deliver real-time,
+                  reliable information with a user-first approach. Designed for
+                  accessibility, speed, and impact..
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project Card 3 -->
+          <a
+            href="https://github.com/azriel123123/AbsenceUi"
+            target="_blank"
+            class="relative group overflow-hidden rounded-xl shadow-xl cursor-pointer"
+          >
+            <img
+              src="/src/img/Absence App.png"
+              alt="Absence App"
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 flex items-end">
+              <div
+                class="w-full px-4 py-6 bg-[#a7886d]/90 text-white translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out rounded-t-xl"
+              >
+                <h3 class="text-xl font-semibold">Absence App Mobile</h3>
+                <p class="text-sm mt-1">Absence App adalah aplikasi mobile untuk mencatat kehadiran secara digital, dibangun dengan Flutter dan Laravel. Aplikasi ini mendukung fitur absensi masuk/keluar, autentikasi, dan penyimpanan data ke server secara realtime.</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project Card 4 -->
+          <a
+            href="https://github.com/azriel123123/WaktuKu-App"
+            target="_blank"
+            class="relative group overflow-hidden rounded-xl shadow-xl cursor-pointer"
+          >
+            <img
+              src="/src/img/WaktuKu.png"
+              alt="WaktuKu App"
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 flex items-end">
+              <div
+                class="w-full px-4 py-6 bg-[#a7886d]/90 text-white translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out rounded-t-xl"
+              >
+                <h3 class="text-xl font-semibold">WaktuKu App</h3>
+                <p class="text-sm mt-1">Waktuku adalah aplikasi manajemen waktu berbasis mobile yang dibuat dengan Flutter dan memanfaatkan Gemini AI API untuk membantu pengguna mengatur jadwal, tugas, dan pengingat secara lebih cerdas.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const cursor = document.querySelector(".cursor");
+          const cursorTrail = document.querySelector(".cursor-trail");
+          const navLinks = document.querySelectorAll(".nav-item");
+          const sections = document.querySelectorAll("section");
+          const mainContent = document.querySelector("main");
+
+          document.addEventListener("mousemove", (e) => {
+            gsap.to(cursor, {
+              x: e.clientX - 10,
+              y: e.clientY - 10,
+              duration: 0.1,
+            });
+            gsap.to(cursorTrail, {
+              x: e.clientX - 4,
+              y: e.clientY - 4,
+              duration: 0.15,
+            });
+          });
+
+          document.querySelectorAll(".hover-target").forEach((el) => {
+            el.addEventListener("mouseenter", () => {
+              gsap.to(cursor, {
+                scale: 2,
+                backgroundColor: "rgba(255, 215, 174, 0.8)",
+                duration: 0.2,
+              });
+            });
+            el.addEventListener("mouseleave", () => {
+              gsap.to(cursor, {
+                scale: 1,
+                backgroundColor: "rgba(167, 136, 109, 0.5)",
+                duration: 0.2,
+              });
+            });
+          });
+
+          // Aktifkan Navbar Saat Scroll
+          function updateActiveNav() {
+            let scrollPos = mainContent.scrollTop; // Scroll terjadi di <main>, bukan window
+
+            sections.forEach((section) => {
+              const sectionTop =
+                section.offsetTop - mainContent.offsetTop - 100;
+              const sectionHeight = section.clientHeight;
+              const sectionId = section.getAttribute("id");
+
+              if (
+                scrollPos >= sectionTop &&
+                scrollPos < sectionTop + sectionHeight
+              ) {
+                navLinks.forEach((link) => {
+                  link.classList.remove("active");
+                  if (link.getAttribute("href") === `#${sectionId}`) {
+                    link.classList.add("active");
+                  }
+                });
+              }
+            });
+          }
+
+          mainContent.addEventListener("scroll", updateActiveNav); // Scroll listener di <main>
+          updateActiveNav(); // Jalankan saat halaman dimuat
+        });
+      </script>
+
+      <!-- Experinces -->
+      <script>
+        const experiences = [
+          {
+            role: "Participants Festida by Gontor",
+            year: "2024 - November",
+            description:
+              "I created an educational website for children that focuses on math. The name of the website is IcixMath by IcixBox.",
+          },
+          {
+            role: "IDN TEACING to SMKN 07 Jakarta",
+            year: "2024 - November",
+            description:
+              "I teach at SMKN 07 with 45 students. The subjects I teach are Computational Thinking and the basics of HTML, CSS, and JavaScript.",
+          },
+          {
+            role: "IDN TANGGUH Goes to Solo",
+            year: "2024 - December",
+            description:
+              "I survived a week in Solo by looking for work independently. Eventually, I landed a job as a designer, media & content creator, and motorcycle shuttle courier at Solo motorcycle rental company Garasi Kamu.",
+          },
+          {
+            role: "IDN BACKPACKER 11 COUNTRIES",
+            year: "2025 - Presents",
+            description:
+              "The IDN Backpacker 11 Countries program is an educational initiative by IDN Boarding School where students have the opportunity to explore 11 different countries while learning and developing essential life skills. The program includes teaching activities in countries like India and Kashmir. Visit their Instagram @idnbackpacker2025.",
+          },
+        ];
+
+        const chatContainer = document.getElementById("chat-container");
+        let index = 0;
+
+        function showTypingIndicator(position) {
+          const typingDiv = document.createElement("div");
+          typingDiv.className = `flex ${
+            position === "left" ? "justify-start" : "justify-end"
+          } items-center space-x-2 text-gray-500 typing-indicator`;
+
+          typingDiv.innerHTML = `
+            <div class="flex items-center space-x-1 bg-gray-200 p-2 rounded-lg">
+              <span class="animate-bounce">•</span>
+              <span class="animate-bounce delay-100">•</span>
+              <span class="animate-bounce delay-200">•</span>
+            </div>
+          `;
+
+          chatContainer.appendChild(typingDiv);
+          return typingDiv;
+        }
+
+        function showNextExperience() {
+          if (index < experiences.length) {
+            const exp = experiences[index];
+            const isEven = index % 2 === 0;
+            const position = isEven ? "left" : "right";
+
+            const typingIndicator = showTypingIndicator(position);
+
+            setTimeout(() => {
+              typingIndicator.remove();
+
+              const bubble = document.createElement("div");
+              bubble.className = `flex ${
+                position === "left" ? "justify-start" : "justify-end"
+              } transition-all transform scale-95 opacity-0 duration-300`;
+
+              bubble.innerHTML = `
+                <div class="${
+                  position === "left"
+                    ? "bg-gray-200 text-[#3a3a3a]"
+                    : "bg-[#a7886d] text-white"
+                } p-4 rounded-xl shadow-md max-w-sm">
+                  <h4 class="text-md font-bold">${exp.role}</h4>
+                  <p class="text-sm">${exp.year}</p>
+                  <p class="mt-2 text-sm">${exp.description}</p>
+                </div>
+              `;
+
+              chatContainer.appendChild(bubble);
+
+              requestAnimationFrame(() => {
+                bubble.classList.remove("opacity-0", "scale-95");
+                bubble.classList.add("opacity-100", "scale-100");
+              });
+
+              index++;
+              setTimeout(showNextExperience, 900); // <- Lebih cepat
+            }, 400); // <- waktu tunggu typing lebih pendek
+          }
+        }
+
+        // Start
+        setTimeout(showNextExperience, 800);
+      </script>
+    </main>
+  </body>
+</html>
